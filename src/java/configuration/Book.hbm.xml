@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 23, 2015 12:50:21 AM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+  <class catalog="olms" name="models.Book" table="book">
+    <id name="bookId" type="java.lang.Integer">
+      <column name="BookID"/>
+      <generator class="identity"/>
+    </id>
+    <property name="bookTitle" type="string">
+      <column length="100" name="BookTitle"/>
+    </property>
+    <property name="bookCategory" type="string">
+      <column length="100" name="BookCategory"/>
+    </property>
+    <property name="isbn" type="string">
+      <column length="50" name="ISBN"/>
+    </property>
+    <property name="authorName" type="string">
+      <column length="50" name="AuthorName"/>
+    </property>
+    <property name="publisher" type="string">
+      <column length="50" name="Publisher"/>
+    </property>
+    <property name="publishedDate" type="date">
+      <column length="10" name="PublishedDate"/>
+    </property>
+    <property name="fileSize" type="string">
+      <column length="20" name="FileSize"/>
+    </property>
+    <property name="bookUrl" type="string">
+      <column length="200" name="BookURL"/>
+    </property>
+    <property name="bookImage" type="string">
+      <column length="50" name="BookImage"/>
+    </property>
+    <property name="readBy" type="string">
+      <column length="20" name="ReadBy"/>
+    </property>
+    <property name="totalPage" type="java.lang.Integer">
+      <column name="TotalPage"/>
+    </property>
+    <property name="description" type="string">
+      <column length="65535" name="Description"/>
+    </property>
+    <property name="copy" type="java.lang.Integer">
+      <column name="Copy"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="bookissues" table="bookissue">
+      <key>
+        <column name="BookID"/>
+      </key>
+      <one-to-many class="models.Bookissue"/>
+    </set>
+  </class>
+</hibernate-mapping>
